@@ -1,0 +1,47 @@
+MIT License
+
+Copyright (c) 2026 [您的企业名称]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 第三方组件许可证
+
+本软件包含以下第三方开源组件：
+
+### VSCodium
+- 许可证: MIT License
+- 来源: https://github.com/VSCodium/vscodium
+
+### ARM GCC Toolchain
+- 许可证: GPL v3 License
+- 来源: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain
+
+注意: 使用 ARM GCC 开发的应用程序不受 GPL 限制。
+
+### C/C++ Extension for VS Code
+- 许可证: MIT License
+- 来源: https://github.com/Microsoft/vscode-cpptools
+
+### Cortex-Debug
+- 许可证: MIT License
+- 来源: https://github.com/Marus/cortex-debug
+
+完整的第三方许可证列表，请参见 `docs/licenses/` 目录。

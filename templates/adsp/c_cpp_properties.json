@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "name": "ADSP-SC834",
+      "includePath": [
+        "${workspaceFolder}/inc/**",
+        "${workspaceFolder}/src/**",
+        "${workspaceFolder}/../toolchains/adi-cces/include",
+        "${workspaceFolder}/../toolchains/adi-cces/include/sys",
+        "${workspaceFolder}/../toolchains/adi-cces/include/ADSP-SC834"
+      ],
+      "defines": [
+        "__ADSPSC834__",
+        "CORE0",
+        "__SHARC__",
+        "__ADSP21000__"
+      ],
+      "compilerPath": "${workspaceFolder}/../toolchains/adi-cces/cc21k.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++14",
+      "intelliSenseMode": "gcc-x64",
+      "compilerArgs": [
+        "-proc",
+        "ADSP-SC834",
+        "-si-revision",
+        "auto"
+      ]
+    }
+  ],
+  "version": 4
+}

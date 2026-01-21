@@ -1,0 +1,46 @@
+{
+  "recommendations": [
+    "ms-vscode.cpptools",
+    "marus25.cortex-debug",
+    "dan-c-underwood.arm",
+    "zixuanwang.linkerscript",
+    "ms-vscode.hexeditor",
+    "tomoki1207.pdf",
+    "webfreak.debug",
+    "ms-vscode.cmake-tools"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "ms-vscode.js-debug-nightly",
+    "ms-python.python",
+    "ms-toolsai.jupyter"
+  ],
+  "description": "专用芯片嵌入式软件IDE 推荐扩展",
+  "extensions": {
+    "ms-vscode.cpptools": {
+      "name": "C/C++",
+      "description": "C/C++ 语言支持",
+      "required": true
+    },
+    "marus25.cortex-debug": {
+      "name": "Cortex-Debug",
+      "description": "ARM Cortex-M 调试支持",
+      "required": true
+    },
+    "dan-c-underwood.arm": {
+      "name": "ARM Assembly",
+      "description": "ARM 汇编语言支持",
+      "required": true
+    },
+    "zixuanwang.linkerscript": {
+      "name": "Linker Script",
+      "description": "链接脚本语法高亮",
+      "required": false
+    },
+    "ms-vscode.hexeditor": {
+      "name": "Hex Editor",
+      "description": "十六进制编辑器",
+      "required": false
+    }
+  }
+}

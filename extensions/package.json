@@ -1,0 +1,122 @@
+{
+  "name": "szide-extension",
+  "displayName": "szideNG - 专用芯片嵌入式软件IDE",
+  "description": "STM32 和 ADSP 开发环境扩展",
+  "version": "1.0.0",
+  "publisher": "your-company",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:szide.newProject",
+    "onCommand:szide.buildProject",
+    "onCommand:szide.disassemble",
+    "onLanguage:c",
+    "onLanguage:cpp"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "szide.newProject",
+        "title": "新建项目",
+        "category": "szideNG",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "szide.buildProject",
+        "title": "构建项目",
+        "category": "szideNG",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "szide.cleanProject",
+        "title": "清理项目",
+        "category": "szideNG",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "szide.disassemble",
+        "title": "反汇编当前文件",
+        "category": "szideNG",
+        "icon": "$(file-binary)"
+      },
+      {
+        "command": "szide.flashDevice",
+        "title": "烧录到设备",
+        "category": "szideNG",
+        "icon": "$(arrow-down)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "szide.newProject",
+          "when": "true"
+        },
+        {
+          "command": "szide.buildProject",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "szide.disassemble",
+          "when": "editorLangId == c || editorLangId == cpp"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "szide.disassemble",
+          "when": "resourceExtname == .elf || resourceExtname == .dxe",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "szide.newProject",
+        "key": "ctrl+shift+n",
+        "mac": "cmd+shift+n"
+      },
+      {
+        "command": "szide.buildProject",
+        "key": "f7",
+        "mac": "f7"
+      }
+    ],
+    "configuration": {
+      "title": "szideNG",
+      "properties": {
+        "szide.stm32ToolchainPath": {
+          "type": "string",
+          "default": "../toolchains/arm-gcc",
+          "description": "STM32 工具链路径"
+        },
+        "szide.adspToolchainPath": {
+          "type": "string",
+          "default": "../toolchains/adi-cces",
+          "description": "ADSP 工具链路径"
+        },
+        "szide.autoSaveBeforeBuild": {
+          "type": "boolean",
+          "default": true,
+          "description": "构建前自动保存所有文件"
+        },
+        "szide.showBuildNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "显示构建通知"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

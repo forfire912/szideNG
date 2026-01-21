@@ -1,0 +1,80 @@
+{
+  "// 专用芯片嵌入式软件IDE - 默认设置": "",
+  
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.tips.enabled": false,
+  
+  "// 编辑器设置": "",
+  "editor.fontSize": 14,
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": true,
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "selection",
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  
+  "// 文件设置": "",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.ld": "c",
+    "*.ldf": "c",
+    "*.s": "arm",
+    "*.S": "arm",
+    "*.asm": "arm"
+  },
+  
+  "// C/C++ 设置": "",
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.autocomplete": "default",
+  "C_Cpp.formatting": "clangFormat",
+  
+  "// ARM STM32 工具链设置": "",
+  "cortex-debug.gdbPath": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gdb.exe",
+  "cortex-debug.armToolchainPath": "${workspaceFolder}/../toolchains/arm-gcc/bin",
+  
+  "// ADI ADSP 工具链设置": "",
+  "adi.cces.installPath": "${workspaceFolder}/../toolchains/adi-cces",
+  "adi.cces.compilerPath": "${workspaceFolder}/../toolchains/adi-cces/cc21k.exe",
+  
+  "// 终端设置": "",
+  "terminal.integrated.shell.windows": "cmd.exe",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.scrollback": 10000,
+  
+  "// 调试设置": "",
+  "debug.allowBreakpointsEverywhere": true,
+  "debug.console.fontSize": 14,
+  "debug.inlineValues": true,
+  "debug.showBreakpointsInOverviewRuler": true,
+  
+  "// 搜索设置": "",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/.git": true
+  },
+  
+  "// Git设置": "",
+  "git.enabled": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  
+  "// 扩展设置": "",
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  
+  "// 遥测禁用": "",
+  "telemetry.telemetryLevel": "off"
+}

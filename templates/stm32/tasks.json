@@ -1,0 +1,137 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build STM32 Project",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gcc",
+      "args": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-DSTM32F429xx",
+        "-DUSE_HAL_DRIVER",
+        "-I${workspaceFolder}/inc",
+        "-I${workspaceFolder}/lib/CMSIS/Include",
+        "-I${workspaceFolder}/lib/CMSIS/Device/ST/STM32F4xx/Include",
+        "-I${workspaceFolder}/lib/STM32F4xx_HAL_Driver/Inc",
+        "-O2",
+        "-g",
+        "-Wall",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-c",
+        "${workspaceFolder}/src/*.c",
+        "-o",
+        "${workspaceFolder}/build/"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "编译 STM32 项目"
+    },
+    {
+      "label": "Link STM32 Project",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gcc",
+      "args": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-specs=nano.specs",
+        "-specs=nosys.specs",
+        "-T${workspaceFolder}/linker/STM32F429BITx_FLASH.ld",
+        "-Wl,-Map=${workspaceFolder}/build/output.map",
+        "-Wl,--gc-sections",
+        "${workspaceFolder}/build/*.o",
+        "-o",
+        "${workspaceFolder}/build/firmware.elf"
+      ],
+      "dependsOn": ["Build STM32 Project"],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "链接 STM32 项目"
+    },
+    {
+      "label": "Generate BIN",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-objcopy",
+      "args": [
+        "-O",
+        "binary",
+        "${workspaceFolder}/build/firmware.elf",
+        "${workspaceFolder}/build/firmware.bin"
+      ],
+      "dependsOn": ["Link STM32 Project"],
+      "group": "build",
+      "detail": "生成 BIN 文件"
+    },
+    {
+      "label": "Generate HEX",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-objcopy",
+      "args": [
+        "-O",
+        "ihex",
+        "${workspaceFolder}/build/firmware.elf",
+        "${workspaceFolder}/build/firmware.hex"
+      ],
+      "dependsOn": ["Link STM32 Project"],
+      "group": "build",
+      "detail": "生成 HEX 文件"
+    },
+    {
+      "label": "Show Size",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-size",
+      "args": [
+        "${workspaceFolder}/build/firmware.elf"
+      ],
+      "dependsOn": ["Link STM32 Project"],
+      "group": "build",
+      "detail": "显示程序大小"
+    },
+    {
+      "label": "Disassemble",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-objdump",
+      "args": [
+        "-d",
+        "-S",
+        "${workspaceFolder}/build/firmware.elf"
+      ],
+      "group": "build",
+      "detail": "反汇编程序"
+    },
+    {
+      "label": "Clean",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-rf",
+        "${workspaceFolder}/build/*"
+      ],
+      "group": "build",
+      "detail": "清理构建文件"
+    },
+    {
+      "label": "Build All",
+      "dependsOn": [
+        "Build STM32 Project",
+        "Link STM32 Project",
+        "Generate BIN",
+        "Generate HEX",
+        "Show Size"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "完整构建项目"
+    }
+  ]
+}

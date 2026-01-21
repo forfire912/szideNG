@@ -1,0 +1,38 @@
+{
+  "name": "STM32F429BIT6-Project",
+  "version": "1.0.0",
+  "description": "STM32F429BIT6 嵌入式项目",
+  "chip": {
+    "vendor": "STMicroelectronics",
+    "series": "STM32F4",
+    "model": "STM32F429BIT6",
+    "core": "ARM Cortex-M4F",
+    "frequency": "180MHz",
+    "flash": "2048KB",
+    "ram": "256KB"
+  },
+  "toolchain": {
+    "compiler": "arm-none-eabi-gcc",
+    "path": "../toolchains/arm-gcc/bin",
+    "version": "12.3",
+    "prefix": "arm-none-eabi-"
+  },
+  "buildConfig": {
+    "outputDir": "build",
+    "targetName": "firmware",
+    "optimizationLevel": "O2"
+  },
+  "folders": [
+    "src",
+    "inc",
+    "lib",
+    "startup",
+    "linker",
+    "docs"
+  ],
+  "files": {
+    "main": "src/main.c",
+    "linker": "linker/STM32F429BITx_FLASH.ld",
+    "startup": "startup/startup_stm32f429xx.s"
+  }
+}

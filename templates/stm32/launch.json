@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug STM32 (OpenOCD)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/firmware.elf",
+      "servertype": "openocd",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f4x.cfg"
+      ],
+      "serverpath": "${workspaceFolder}/../toolchains/openocd/bin/openocd.exe",
+      "gdbPath": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gdb.exe",
+      "device": "STM32F429BI",
+      "svdFile": "${workspaceFolder}/lib/SVD/STM32F429.svd",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "Build All",
+      "showDevDebugOutput": "parsed"
+    },
+    {
+      "name": "Debug STM32 (J-Link)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/firmware.elf",
+      "servertype": "jlink",
+      "device": "STM32F429BI",
+      "interface": "swd",
+      "serverpath": "C:/Program Files/SEGGER/JLink/JLinkGDBServerCL.exe",
+      "gdbPath": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gdb.exe",
+      "svdFile": "${workspaceFolder}/lib/SVD/STM32F429.svd",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "Build All",
+      "showDevDebugOutput": "parsed"
+    },
+    {
+      "name": "Debug STM32 (ST-Link)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/firmware.elf",
+      "servertype": "stlink",
+      "device": "STM32F429BI",
+      "gdbPath": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gdb.exe",
+      "svdFile": "${workspaceFolder}/lib/SVD/STM32F429.svd",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "Build All",
+      "showDevDebugOutput": "parsed"
+    },
+    {
+      "name": "Attach STM32",
+      "type": "cortex-debug",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/firmware.elf",
+      "servertype": "openocd",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f4x.cfg"
+      ],
+      "gdbPath": "${workspaceFolder}/../toolchains/arm-gcc/bin/arm-none-eabi-gdb.exe",
+      "svdFile": "${workspaceFolder}/lib/SVD/STM32F429.svd",
+      "showDevDebugOutput": "parsed"
+    }
+  ]
+}

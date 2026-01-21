@@ -1,0 +1,26 @@
+{
+  "productName": "专用芯片嵌入式软件IDE",
+  "applicationName": "szideNG",
+  "companyName": "您的企业名称",
+  "version": "1.0.0",
+  "copyright": "Copyright © 2026 您的企业名称. All rights reserved.",
+  "description": "基于VSCodium的嵌入式开发环境",
+  "icon": {
+    "path": "resources/icon.ico",
+    "description": "应用程序图标"
+  },
+  "splash": {
+    "path": "resources/splash.png",
+    "description": "启动画面"
+  },
+  "about": {
+    "title": "关于 专用芯片嵌入式软件IDE",
+    "content": "版本: 1.0.0\n\n集成工具链:\n- ARM GCC for STM32F429BIT6\n- ADI CCES for ADSP-SC834/SC834W\n\n基于 VSCodium 开源项目构建\nMIT License",
+    "logo": "resources/logo.png"
+  },
+  "windowTitle": "专用芯片嵌入式软件IDE",
+  "updateUrl": "",
+  "supportUrl": "https://your-company.com/support",
+  "licenseUrl": "https://your-company.com/license",
+  "homepageUrl": "https://your-company.com"
+}

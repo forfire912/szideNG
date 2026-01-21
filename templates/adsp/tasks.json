@@ -1,0 +1,142 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build ADSP Project",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/cc21k.exe",
+      "args": [
+        "-proc",
+        "ADSP-SC834",
+        "-si-revision",
+        "auto",
+        "-O2",
+        "-g",
+        "-DCORE0",
+        "-D__ADSPSC834__",
+        "-I${workspaceFolder}/inc",
+        "-I${workspaceFolder}/../toolchains/adi-cces/include",
+        "-c",
+        "${workspaceFolder}/src/*.c",
+        "-o",
+        "${workspaceFolder}/build/"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "编译 ADSP 项目"
+    },
+    {
+      "label": "Assemble ADSP Files",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/asm21k.exe",
+      "args": [
+        "-proc",
+        "ADSP-SC834",
+        "-si-revision",
+        "auto",
+        "-g",
+        "${workspaceFolder}/startup/*.asm",
+        "-o",
+        "${workspaceFolder}/build/"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "汇编 ADSP 文件"
+    },
+    {
+      "label": "Link ADSP Project",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/link21k.exe",
+      "args": [
+        "-proc",
+        "ADSP-SC834",
+        "-T",
+        "${workspaceFolder}/ldf/app.ldf",
+        "-map",
+        "${workspaceFolder}/build/output.map",
+        "-flags-link",
+        "-od,${workspaceFolder}/build",
+        "-o",
+        "${workspaceFolder}/build/firmware.dxe",
+        "${workspaceFolder}/build/*.doj"
+      ],
+      "dependsOn": ["Build ADSP Project", "Assemble ADSP Files"],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "链接 ADSP 项目"
+    },
+    {
+      "label": "Generate LDR (Boot)",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/elfloader.exe",
+      "args": [
+        "-proc",
+        "ADSP-SC834",
+        "-b",
+        "SPI",
+        "-f",
+        "binary",
+        "-o",
+        "${workspaceFolder}/build/firmware.ldr",
+        "${workspaceFolder}/build/firmware.dxe"
+      ],
+      "dependsOn": ["Link ADSP Project"],
+      "group": "build",
+      "detail": "生成引导加载文件"
+    },
+    {
+      "label": "Disassemble ADSP",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/elfdump.exe",
+      "args": [
+        "-d",
+        "${workspaceFolder}/build/firmware.dxe",
+        ">",
+        "${workspaceFolder}/build/firmware.asm"
+      ],
+      "group": "build",
+      "detail": "反汇编 ADSP 程序"
+    },
+    {
+      "label": "Show Memory Map",
+      "type": "shell",
+      "command": "${workspaceFolder}/../toolchains/adi-cces/elfdump.exe",
+      "args": [
+        "-h",
+        "${workspaceFolder}/build/firmware.dxe"
+      ],
+      "dependsOn": ["Link ADSP Project"],
+      "group": "build",
+      "detail": "显示内存映射"
+    },
+    {
+      "label": "Clean ADSP",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-rf",
+        "${workspaceFolder}/build/*"
+      ],
+      "group": "build",
+      "detail": "清理构建文件"
+    },
+    {
+      "label": "Build All ADSP",
+      "dependsOn": [
+        "Build ADSP Project",
+        "Assemble ADSP Files",
+        "Link ADSP Project",
+        "Generate LDR (Boot)",
+        "Show Memory Map"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "完整构建 ADSP 项目"
+    }
+  ]
+}

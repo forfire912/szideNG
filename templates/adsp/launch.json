@@ -1,0 +1,90 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ADSP (ICE-1000)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/firmware.dxe",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/../toolchains/adi-cces/ice-gdb-server.exe",
+      "miDebuggerServerAddress": "localhost:2000",
+      "preLaunchTask": "Build All ADSP",
+      "setupCommands": [
+        {
+          "description": "连接到 ICE",
+          "text": "target remote localhost:2000",
+          "ignoreFailures": false
+        },
+        {
+          "description": "加载程序",
+          "text": "load",
+          "ignoreFailures": false
+        },
+        {
+          "description": "设置断点",
+          "text": "break main",
+          "ignoreFailures": false
+        }
+      ],
+      "stopAtEntry": true,
+      "externalConsole": false,
+      "logging": {
+        "trace": true,
+        "traceResponse": true,
+        "engineLogging": true
+      }
+    },
+    {
+      "name": "Debug ADSP (ICE-2000)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/firmware.dxe",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/../toolchains/adi-cces/ice-gdb-server.exe",
+      "miDebuggerServerAddress": "localhost:2000",
+      "miDebuggerArgs": "--ice ice-2000",
+      "preLaunchTask": "Build All ADSP",
+      "setupCommands": [
+        {
+          "description": "连接到 ICE-2000",
+          "text": "target remote localhost:2000",
+          "ignoreFailures": false
+        },
+        {
+          "description": "加载程序",
+          "text": "load",
+          "ignoreFailures": false
+        }
+      ],
+      "stopAtEntry": true,
+      "externalConsole": false
+    },
+    {
+      "name": "Debug ADSP Core 0",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/firmware.dxe",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/../toolchains/adi-cces/ice-gdb-server.exe",
+      "miDebuggerServerAddress": "localhost:2000",
+      "miDebuggerArgs": "--core 0",
+      "preLaunchTask": "Build All ADSP",
+      "stopAtEntry": true,
+      "externalConsole": false
+    },
+    {
+      "name": "Attach ADSP",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "${workspaceFolder}/build/firmware.dxe",
+      "processId": "${command:pickProcess}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/../toolchains/adi-cces/ice-gdb-server.exe",
+      "miDebuggerServerAddress": "localhost:2000"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ADSP-SC834-Project",
+  "version": "1.0.0",
+  "description": "ADSP-SC834/SC834W 数字信号处理项目",
+  "chip": {
+    "vendor": "Analog Devices",
+    "series": "SHARC+",
+    "model": "ADSP-SC834",
+    "variant": "ADSP-SC834W (with WiFi)",
+    "core": "SHARC+ DSP",
+    "frequency": "500MHz",
+    "l1Memory": "8MB",
+    "l2Memory": "Configurable"
+  },
+  "toolchain": {
+    "compiler": "cc21k",
+    "assembler": "asm21k",
+    "linker": "link21k",
+    "path": "../toolchains/adi-cces",
+    "version": "2.11.0"
+  },
+  "buildConfig": {
+    "outputDir": "build",
+    "targetName": "firmware",
+    "processor": "ADSP-SC834",
+    "siRevision": "auto",
+    "optimizationLevel": "O2"
+  },
+  "folders": [
+    "src",
+    "inc",
+    "lib",
+    "ldf",
+    "startup",
+    "docs"
+  ],
+  "files": {
+    "main": "src/main.c",
+    "ldf": "ldf/app.ldf",
+    "startup": "startup/startup.asm"
+  },
+  "cores": {
+    "enabled": 1,
+    "core0": {
+      "name": "Core 0",
+      "entry": "main"
+    }
+  }
+}
